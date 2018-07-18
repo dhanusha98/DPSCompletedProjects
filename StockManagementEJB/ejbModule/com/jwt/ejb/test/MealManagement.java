@@ -23,9 +23,8 @@ public class MealManagement {
 	
 	private static Context initialContext;
 	
-	private static MealProducts bean; //BEAN TO ACCESS BUSINESS LOGIC DATA
+	private static MealProducts bean=doLookUp(); //BEAN TO ACCESS BUSINESS LOGIC DATA
 	private static Meal mealObj;
-	
 	
 	public static Context getInitialContext() throws NamingException {
 		
@@ -140,10 +139,8 @@ public class MealManagement {
 
 	public static void main(String[] args) {
 		
-Scanner sc=new Scanner(System.in);
-		
-		MealProducts bean=doLookUp();
-		
+        Scanner sc=new Scanner(System.in);
+				
 		System.out.println("=================================================================================");
 		System.out.println("                              MEAL PRODUCT MANAGEMENT                             ");
 		System.out.println("=================================================================================");

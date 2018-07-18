@@ -21,11 +21,11 @@ public class FruitManagement {
 	
 	private static Context initialContext;
 	
-	private static ManageFruit bean; //BEAN TO ACCESS BUSINESS LOGIC DATA
+	private static ManageFruit bean=doLookUp(); //BEAN TO ACCESS BUSINESS LOGIC DATA
 	private static Fruit fruitObj;
-
+	
 	public static Context getInitialContext() throws NamingException {
-		
+
 		if(initialContext ==null) {
 			Properties prop=new Properties();
 			
@@ -58,7 +58,7 @@ public class FruitManagement {
 	}
 	
 	public static void searchFruitViewer() {
-		
+				
 		System.out.println("====================================== SEARCH PRODUCTS =====================================");
 		
 		System.out.println("ENTER FRUIT ID: ");
@@ -70,7 +70,7 @@ public class FruitManagement {
 	}
 	
 	public static void insertFruitViewer() {
-		
+						
 		System.out.println("====================================== INSERT PRODUCTS =====================================");
 		
 		System.out.println("ENTER FRUIT NAME: ");
@@ -91,11 +91,10 @@ public class FruitManagement {
 		fruitObj.setOtherDetails(otherDetails);
 		
 		bean.insertProduct();
-
 	}
 	
 	public static void updateFruitViewer() {
-		
+						
 		System.out.println("====================================== UPDATE PRODUCTS =====================================");
 		
 		System.out.println("ENTER FRUIT ID: ");
@@ -123,7 +122,7 @@ public class FruitManagement {
 	}
 	
 	public static void deleteFruitViewer() {
-		
+				
 		System.out.println("====================================== DELETE PRODUCTS =====================================");
 
 		System.out.println("ENTER FRUIT ID: ");
@@ -137,9 +136,7 @@ public class FruitManagement {
 	public static void main(String[] args) {
 		
 		Scanner sc=new Scanner(System.in);
-		
-		ManageFruit bean=doLookUp();
-		
+				
 		System.out.println("=================================================================================");
 		System.out.println("                              FRUIT MANAGEMENT                                   ");
 		System.out.println("=================================================================================");

@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 
 import com.jwt.ejb.business.ManageBeverage;
 import com.jwt.ejb.business.ManageFruit;
+import com.jwt.ejb.business.UserProfile;
 import com.jwt.ejb.businesslogic.Beverage;
 import com.jwt.ejb.businesslogic.Fruit;
 
@@ -25,7 +26,7 @@ public class BeverageManagement {
 	
 	private static ManageBeverage bean; //BEAN TO ACCESS BUSINESS LOGIC DATA
 	private static Beverage beverageObj;
-	
+		
 	public static Context getInitialContext() throws NamingException {
 		
 		if(initialContext ==null) {
@@ -61,7 +62,7 @@ public class BeverageManagement {
 		
 	
 	public static void searchBeverageViewer() {
-		
+				
 		System.out.println("====================================== SEARCH PRODUCTS =====================================");
 		System.out.println();
 		
@@ -74,7 +75,7 @@ public class BeverageManagement {
 	}
 	
 	public static void insertBeverageViewer() {
-		
+				
 		System.out.println("====================================== INSERT PRODUCTS =====================================");
 		System.out.println();
 		
@@ -99,7 +100,7 @@ public class BeverageManagement {
 	}
 	
 	public static void updateBeverageViewer() {
-		
+				
 		System.out.println("====================================== UPDATE PRODUCTS =====================================");
 		System.out.println();
 		
@@ -118,25 +119,30 @@ public class BeverageManagement {
 		System.out.println("ENTER OTHER DETAILS: ");
 		String otherDetails=sc.nextLine();
 		
+		beverageObj.setBeverageID(beverageID);
+		beverageObj.setBeverageName(beverageName);
+		beverageObj.setProductCategory(productCategory);
+		beverageObj.setPrice(price);
+		beverageObj.setOtherDetails(otherDetails);
+		
 		bean.updateProduct();
 	}
 	
 	public static void deleteBeverageViewer() {
-		
+				
 		System.out.println("====================================== DELETE PRODUCTS =====================================");
 		System.out.println();
 		
 		System.out.println("ENTER BEVERAGE ID: ");
 		int beverageID=sc.nextInt();
 		
+		beverageObj.setBeverageID(beverageID);
 		bean.deleteProduct();
 		
 	}
 	
 	public static void main(String[] args) {
-		
-        ManageBeverage bean=doLookUp();
-		
+				
 		System.out.println("=================================================================================");
 		System.out.println("                              FRUIT MANAGEMENT                                   ");
 		System.out.println("=================================================================================");

@@ -13,14 +13,61 @@ public class UserProfileOperation implements UserProfile {
 	
 	public void searchProfile() {
 		
+		try {
+			
+			int userID=userObj.getUserID();
+			userDAObj.searchProfile(userID);
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
 	}
+	
 	public void insertProfile() {
 		
+		try {
+			
+			String fullname=userObj.getFullname();
+			String username=userObj.getUsername();
+			String password=userObj.getPassword();
+			String otherProfileDetails=userObj.getOtherDetails();
+			
+			userDAObj.insertProfile(fullname, username, password, otherProfileDetails);
+			
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 	public void updateProfile() {
 		
+		try {
+			
+			int userID=userObj.getUserID();
+			String fullname=userObj.getFullname();
+			String username=userObj.getUsername();
+			String password=userObj.getPassword();
+			String otherProfileDetails=userObj.getOtherDetails();
+			
+			userDAObj.updateProfile(userID, fullname, username, password, otherProfileDetails);
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 	public void deleteProfile() {
 		
+		try {
+			
+			int userID=userObj.getUserID();
+			userDAObj.deleteProfile(userID);
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 }
