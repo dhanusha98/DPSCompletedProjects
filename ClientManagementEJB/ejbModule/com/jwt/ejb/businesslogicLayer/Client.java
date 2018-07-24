@@ -39,6 +39,4 @@ public class Client {
 		this.otherDetails = otherDetails;
 	}
 	
-	
-
 }

@@ -1,9 +1,10 @@
 package com.jwt.ejb.businesslogicLayer;
 
+import com.jwt.ejb.business.UserValidationStructure;
 import com.jwt.ejb.dataAccessLayer.AdminDataAccessor;
 import com.jwt.ejb.dataAccessLayer.ClientDataAccessor;
 
-public class UserValidation {
+public class UserValidation implements UserValidationStructure {
 	
 	private Admin admObj=new Admin();
 	private Client custObj=new Client();
