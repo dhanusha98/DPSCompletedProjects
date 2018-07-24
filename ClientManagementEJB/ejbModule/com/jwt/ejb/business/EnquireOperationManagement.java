@@ -6,7 +6,7 @@ import javax.ejb.Remote;
 public interface EnquireOperationManagement {
 
     public void searchEnquiry();
-    public void insertEnquiry();
-    public void updateEnquiry();
-    public void deleeEnquiry();
+    public String insertEnquiry();
+    public String updateEnquiry();
+    public String deleteEnquiry();
 }

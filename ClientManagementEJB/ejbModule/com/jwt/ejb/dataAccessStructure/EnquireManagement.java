@@ -6,7 +6,7 @@ import javax.ejb.Remote;
 public interface EnquireManagement {
 
 	public void searchEnquiry(int enquiryID);
-    public void insertEnquiry(String senderName, String telephoneNumber, String emailAddress, String address, String message, String feedback);
-    public void updateEnquiry(int enquiryID, String senderName, String telephoneNumber, String emailAddress, String address, String message, String feedback);
-    public void deleteEnquiry(int enquiryID);
+    public boolean insertEnquiry(String senderName, String telephoneNumber, String emailAddress, String address, String message, String feedback);
+    public boolean updateEnquiry(int enquiryID, String feedback);
+    public boolean deleteEnquiry(int enquiryID);
 }

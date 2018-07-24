@@ -18,6 +18,33 @@ public class AdminDataAccessor implements AdminManagement {
 	private Connection conn=dbconnObj.dbConnection();	
 
 	
+	public boolean userValidation(String username, String password) 
+	{
+		
+		boolean isValid=false;
+		
+		try {
+			
+			Statement validationStmt=conn.createStatement();
+			sql="SELECT * FROM admin WHERE AdminUsername='"+username+"', AND AdminPassword='"+password+"'";
+			
+			ResultSet rs=validationStmt.executeQuery(sql);
+			
+			if(rs.next())
+			{
+				isValid=true;
+			} else {
+				isValid=false;
+			}
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return isValid;
+	}
+
 	public void searchProfile(int adminID)
 	{
 		
@@ -49,8 +76,10 @@ public class AdminDataAccessor implements AdminManagement {
 			ex.printStackTrace();
 		}
 	}
-	public void insertProfile(String adminName, String username, String password, String otherDetails)
+	public boolean insertProfile(String adminName, String username, String password, String otherDetails)
 	{
+		
+		boolean insertionStatus=false;
 		
 		try {
 			
@@ -60,10 +89,9 @@ public class AdminDataAccessor implements AdminManagement {
 			int result=insertStmt.executeUpdate(sql);
 			
 			if(result > 0) {
-				
-				System.out.println("SUCCESSFULLY INSERTED !");
+				insertionStatus=true;
 			} else {
-				System.out.println("INSERTION FAILED !");
+				insertionStatus=false;
 			}
 			
 		}
@@ -72,23 +100,61 @@ public class AdminDataAccessor implements AdminManagement {
 			ex.printStackTrace();
 		}
 		
+		return insertionStatus;
+		
 	}
-	public void updateProfile(int adminID, String adminName, String username, String password, String otherDetails)
+	public boolean updateProfile(int adminID, String adminName, String username, String password, String otherDetails)
 	{
+		
+		boolean updateStatus=false;
 		
 		try {
 			
+			Statement updateStmt=conn.createStatement();
+			sql="UPDATE admin SET AdminName='"+adminName+"', Username='"+username+"', Password='"+password+"', OtherDetails='"+otherDetails+"' WHERE AdminID="+adminID+"";
 			
+			int result=updateStmt.executeUpdate(sql);
+			
+			if(result > 0)
+			{
+				updateStatus=true;
+			} else {
+				updateStatus=false;			
+			}
 		}
 		
 		catch(Exception ex) {
 			ex.printStackTrace();
 		}
 		
+		return updateStatus;
+		
 	}
-	public void deleteProfile(int adminID)
+	public boolean deleteProfile(int adminID)
 	{
 		
+		boolean deleteStatus=false;
+		
+		try {
+			
+			Statement deleteStmt=conn.createStatement();
+			sql="DELETE FROM admin WHERE AdminID="+adminID+"";
+			
+			int result = deleteStmt.executeUpdate(sql);
+			
+			if(result > 0) {
+				deleteStatus=true;
+			} else {
+				deleteStatus=false;
+			}
+		} 
+		
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		
+		return deleteStatus;
 	}
 
 }

@@ -6,8 +6,8 @@ import javax.ejb.Remote;
 public interface AdminOperationManagement {
 
 	public void searchProfile();
-	public void insertProfile();
-	public void updateProfile();
-	public void deleteProfile();
+	public String insertProfile();
+	public String updateProfile();
+	public String deleteProfile();
 
 }

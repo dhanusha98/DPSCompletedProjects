@@ -1,8 +1,6 @@
 package com.jwt.ejb.businesslogicLayer;
 
 public class Enquiry {
-
-	// int enquiryID, String senderName, String telephoneNumber, String emailAddress, String address, String message, String feedback
 	
 	private int enquiryID;
 	private String senderName;
