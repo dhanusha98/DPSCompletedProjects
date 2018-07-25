@@ -1,7 +1,13 @@
 package com.jwt.ejb.presentationLayer;
 
+import java.util.Properties;
 import java.util.Scanner;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import com.jwt.ejb.business.AdminOperationManagement;
 import com.jwt.ejb.businesslogicLayer.Admin;
 import com.jwt.ejb.businesslogicLayer.AdminOperation;
 
@@ -13,6 +19,52 @@ public class AdminManagementViewer {
 	private static AdminOperation admOPObj=new AdminOperation();
 	
 	private static String transactionResultStatus;
+	
+	private static final String LOOKUP_STRING="AdminOperation/remote";
+	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099";
+	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces";
+	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory";
+	
+	private static Context initialContext;
+	
+	private static AdminOperationManagement bean=doLookUp();
+	
+	public static Context getInitialContext() throws NamingException {
+		
+		if(initialContext == null)
+		{
+			
+			Properties prop=new Properties();
+			
+			prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
+			prop.put(Context.PROVIDER_URL, PROVIDER_URL);
+			prop.put(Context.URL_PKG_PREFIXES, JNP_INTERFACES);
+			
+			initialContext=new InitialContext(prop);
+		}
+		
+		return initialContext;
+	}
+	
+	private static AdminOperationManagement doLookUp()
+	{
+		
+		Context context=null;
+		AdminOperationManagement bean=null;
+		
+		try {
+			
+			context=getInitialContext();
+			bean=(AdminOperationManagement)context.lookup(LOOKUP_STRING);
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return bean;
+		
+	}
 	
 	public static void searchAdminProfile()
 	{
@@ -28,8 +80,8 @@ public class AdminManagementViewer {
 			
 		} else {
 			
-			admObj.setAdminID(adminID);
 			admOPObj.searchProfile();
+			bean.searchProfile();
 		}
 	}
 	
@@ -61,7 +113,7 @@ public class AdminManagementViewer {
 			admObj.setPassword(adminPassword);
 			admObj.setOtherDetails(otherDetails);
 			
-			transactionResultStatus=admOPObj.insertProfile();
+			transactionResultStatus=bean.insertProfile();
 			
 			System.out.println(transactionResultStatus);
 		}
@@ -101,7 +153,7 @@ public class AdminManagementViewer {
 			admObj.setPassword(adminPassword);
 			admObj.setOtherDetails(otherDetails);
 			
-			transactionResultStatus=admOPObj.updateProfile();
+			transactionResultStatus=bean.updateProfile();
 			
 			System.out.println(transactionResultStatus);
 		}
@@ -124,7 +176,7 @@ public class AdminManagementViewer {
 			
 			admObj.setAdminID(adminID);
 			
-			transactionResultStatus=admOPObj.deleteProfile();
+			transactionResultStatus=bean.deleteProfile();
 			System.out.println(transactionResultStatus);
 
 		}

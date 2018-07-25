@@ -1,7 +1,13 @@
 package com.jwt.ejb.presentationLayer;
 
+import java.util.Properties;
 import java.util.Scanner;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import com.jwt.ejb.business.ClientOperationManagement;
 import com.jwt.ejb.businesslogicLayer.Client;
 import com.jwt.ejb.businesslogicLayer.ClientOperation;
 
@@ -14,6 +20,53 @@ public class ClientManagementViewer {
 	
 	private static String transactionResultStatus;
 	
+	private static final String LOOKUP_STRING="ClientOperation/remote";
+	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099";
+	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces";
+	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory";
+	
+	private static Context initialContext;
+	
+	private static ClientOperationManagement bean=doLookUp();
+	
+	public static Context getInitialContext() throws NamingException 
+	{
+		
+		if(initialContext == null)
+		{
+			
+			Properties prop=new Properties();
+			
+			prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
+			prop.put(Context.PROVIDER_URL, PROVIDER_URL);
+			prop.put(Context.URL_PKG_PREFIXES, JNP_INTERFACES);
+
+			initialContext=new InitialContext(prop);
+			
+		}
+		
+		return initialContext;
+	}
+	
+	private static ClientOperationManagement doLookUp()
+	{
+		
+		Context context=null;
+		ClientOperationManagement bean=null;
+		
+		try {
+			
+			context=getInitialContext();
+			bean=(ClientOperationManagement)context.lookup(LOOKUP_STRING);
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return bean;
+	}
+	
 	public static void searchClient()
 	{
 		
@@ -23,7 +76,8 @@ public class ClientManagementViewer {
 		int customerID=sc.nextInt();
 		
 		clientObj.setCustomerID(customerID);
-		clientOPObj.searchProfile();
+		
+		bean.searchProfile();
 	}
 	
 	public static void insertClient()
@@ -54,7 +108,7 @@ public class ClientManagementViewer {
 			clientObj.setPassword(password);
 			clientObj.setOtherDetails(otherDetails);
 			
-			transactionResultStatus=clientOPObj.insertProfile();
+			transactionResultStatus=bean.insertProfile();
 			
 			System.out.println(transactionResultStatus);
 		}
@@ -94,7 +148,7 @@ public class ClientManagementViewer {
 			clientObj.setPassword(password);
 			clientObj.setOtherDetails(otherDetails);
 			
-			transactionResultStatus=clientOPObj.updateProfile();
+			transactionResultStatus=bean.updateProfile();
 			
 			System.out.println(transactionResultStatus);
 		}
@@ -116,7 +170,7 @@ public class ClientManagementViewer {
 
 			clientObj.setCustomerID(customerID);
 			
-			transactionResultStatus=clientOPObj.deleteProfile();
+			transactionResultStatus=bean.deleteProfile();
 			
 			System.out.println(transactionResultStatus);
 		}

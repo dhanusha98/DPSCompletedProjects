@@ -1,9 +1,15 @@
 package com.jwt.ejb.presentationLayer;
 
+import java.util.Properties;
 import java.util.Scanner;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import com.jwt.ejb.businesslogicLayer.EnquireOperation;
 import com.jwt.ejb.businesslogicLayer.Enquiry;
+import com.jwt.ejb.business.*;
 
 public class EnquiryManagementViewer {
 	
@@ -13,6 +19,51 @@ public class EnquiryManagementViewer {
 	private static String transactionResultStatus;
 	
 	private static Scanner sc=new Scanner(System.in);
+	
+	private static final String LOOKUP_STRING="EnquiryOperation/remote";
+	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099";
+	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces";
+	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory";
+	
+	private static Context initialContext;
+	
+	private static EnquireOperationManagement bean=doLookUp();
+	
+	public static Context getInitialContext() throws NamingException 
+	{
+		
+		if(initialContext == null) {
+			
+			Properties prop=new Properties();
+			
+			prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
+			prop.put(Context.PROVIDER_URL, PROVIDER_URL);
+			prop.put(Context.URL_PKG_PREFIXES, JNP_INTERFACES);
+			
+			initialContext=new InitialContext();
+		}
+		
+		return initialContext;
+	}
+	
+    private static EnquireOperationManagement doLookUp()
+    {
+    	
+    	Context context=null;
+    	EnquireOperationManagement bean=null;
+    	
+    	try {
+    		
+    		context=getInitialContext();
+    		bean=(EnquireOperationManagement) context.lookup(LOOKUP_STRING);
+    	}
+    	
+    	catch(Exception ex) {
+    		ex.printStackTrace();
+    	}
+    	
+    	return bean;
+    }
 	
 	public static void searchEnquiry()
 	{
@@ -28,7 +79,8 @@ public class EnquiryManagementViewer {
 		} else {
 			
 			enqObj.setEnquiryID(enquiryID);			
-			enquireOPObj.searchEnquiry();
+
+			bean.searchEnquiry();
 		}
 	}
 	
@@ -69,7 +121,7 @@ public class EnquiryManagementViewer {
 			enqObj.setMessage(message);
 			enqObj.setFeedback(feedback);
 			
-			transactionResultStatus=enquireOPObj.insertEnquiry();
+			transactionResultStatus=bean.insertEnquiry();
 			
 			System.out.println(transactionResultStatus);
 		}
@@ -116,7 +168,7 @@ public class EnquiryManagementViewer {
 				enqObj.setMessage(message);
 				enqObj.setFeedback(feedback);
 					
-				transactionResultStatus=enquireOPObj.updateEnquiry();
+				transactionResultStatus=bean.updateEnquiry();
 					
 				System.out.println(transactionResultStatus);
 		}
@@ -138,7 +190,7 @@ public class EnquiryManagementViewer {
 			
 			enqObj.setEnquiryID(enquiryID);			
 			
-			transactionResultStatus=enquireOPObj.deleteEnquiry();
+			transactionResultStatus=bean.deleteEnquiry();
 			System.out.println(transactionResultStatus);
 
 		}

@@ -13,16 +13,12 @@ import com.jwt.ejb.businesslogicLayer.Client;
 import com.jwt.ejb.businesslogicLayer.UserValidation;
 
 public class Login {
-	
-	private static Scanner sc=new Scanner(System.in);
-	
+		
 	private static Admin admObj=new Admin();
 	private static Client clientObj=new Client();
 	
 	private static UserValidation uservalObj=new UserValidation();
 	
-	private static String username;
-	private static String password;
 	
 	private static String userValidationStatus;
 	
@@ -72,6 +68,12 @@ public class Login {
 	
 	public static void main(String [] args) {
 		
+		String username;
+		String password;
+	
+		
+		Scanner sc=new Scanner(System.in);
+		
 		System.out.println("PRESS THE 'USER TYPE' NUMBER FROM FOLLOWING LIST");
 		
 		System.out.println("1. CUSTOMER");
@@ -84,7 +86,8 @@ public class Login {
 		{
 			
 			System.out.println("ENTER USERNAME: ");
-			username=sc.nextLine();
+			username=sc.next();
+			sc.nextLine();
 			
 			System.out.println("ENTER PASSWORD: ");
 			password=sc.nextLine();
@@ -111,7 +114,8 @@ public class Login {
 		} else if (selectedUserType == 2) {
 			
 			System.out.println("ENTER USERNAME: ");
-			username=sc.nextLine();
+			username=sc.next();
+			sc.nextLine();
 			
 			System.out.println("ENTER PASSWORD: ");
 			password=sc.nextLine();
