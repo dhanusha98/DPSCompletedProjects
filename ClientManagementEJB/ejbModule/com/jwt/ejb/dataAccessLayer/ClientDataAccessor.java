@@ -19,6 +19,8 @@ public class ClientDataAccessor implements ClientManagement {
 	public boolean userValidation(String username, String password)
 	{
 		
+		//DATABASE INFORMATION ACCESSOR FOR USER VALIDATIONS
+		
 		boolean isValid=false;
 		
 		try {
@@ -45,6 +47,8 @@ public class ClientDataAccessor implements ClientManagement {
 
 	public void searchProfile(int customerID) 
 	{
+		
+		//SEARCH PROFILE DATA ACCESSING OPERATION
 		
 		try {
 			
@@ -74,8 +78,10 @@ public class ClientDataAccessor implements ClientManagement {
 	public boolean insertProfile(String customerFullName, String username, String password, String otherDetails) 
 	{
 		
+		//INSERT PROFILE DATA TO DATABASE
+		
 		boolean insertionStatus=false;
-	
+			
 		try {
 			
 			Statement insertStmt=conn.createStatement();
@@ -98,6 +104,8 @@ public class ClientDataAccessor implements ClientManagement {
 	}
 	public boolean updateProfile(int customerID, String customerFullName, String username, String password, String otherDetails)
 	{
+		
+		//UPDATE PROFILE DATA IN THE DATABASE
 		
 		boolean updateStatus=false;
 		
@@ -124,6 +132,8 @@ public class ClientDataAccessor implements ClientManagement {
 	}
 	public boolean deleteProfile(int customerID) 
 	{
+		
+		//DELETE PROFILE DATA IN THE DATABASE
 		
 		boolean deleteStatus=false;
 		

@@ -1,6 +1,8 @@
 package com.jwt.ejb.businesslogicLayer;
 
 public class Client {
+	
+	//CLIENT ENTITY WITH ITS ATTRIBUTES AND METHODS TO ACCESS AND SET VALUES FOR THEM
 		
 	private int customerID;
 	private String customerFullName;

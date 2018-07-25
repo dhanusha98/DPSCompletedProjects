@@ -15,7 +15,10 @@ public class AdminOperation implements AdminOperationManagement {
 	private boolean queryResult; //QUERY RESULT STATUS IN DATA ACCESS LAYER OPERATIONS
 	
 	public void searchProfile()
-	{
+	{	
+		//SEARCH ADMIN PROFILE OPERATION
+		
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'SEARCH OPERATION'
 		
 	    int adminID=admObj.getAdminID();
 	    admDAObj.searchProfile(adminID);
@@ -24,6 +27,10 @@ public class AdminOperation implements AdminOperationManagement {
 	
 	public String insertProfile()
 	{
+		
+		//INSERT ADMIN PROFILE OPERATION
+		
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'INSERT OPERATION'
 		
 		String adminName=admObj.getAdminName();
 		String username=admObj.getUsername();
@@ -47,6 +54,10 @@ public class AdminOperation implements AdminOperationManagement {
 	public String updateProfile()
 	{
 		
+		//UPDATE ADMIN PROFILE OPERATION
+		
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'UPDATE OPERATION'
+				
 		int adminID=admObj.getAdminID();
 		String adminName=admObj.getAdminName();
 		String username=admObj.getUsername();
@@ -68,7 +79,12 @@ public class AdminOperation implements AdminOperationManagement {
 	
 	public String deleteProfile()
 	{
-		int adminID=admObj.getAdminID();
+		
+		//DELETE ADMIN PROFILE OPERATION
+		
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'DELETE OPERATION'
+		
+		int adminID=admObj.getAdminID();  
 		queryResult=admDAObj.deleteProfile(adminID);
 		
         if (queryResult == true) {

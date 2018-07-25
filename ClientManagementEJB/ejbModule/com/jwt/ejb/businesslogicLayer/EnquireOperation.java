@@ -17,12 +17,20 @@ public class EnquireOperation implements EnquireOperationManagement {
 	 public void searchEnquiry()
 	 {
 		 
+		//SEARCH ENQUIRY OPERATION
+			
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'SEARCH OPERATION'
+		 
 		 int enquiryID=enqObj.getEnquiryID();
 		 enqDAObj.searchEnquiry(enquiryID);
 		 
 	 }
 	 public String insertEnquiry()
 	 {
+		 
+		//INSERT ENQUIRY OPERATION
+			
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'INSERT OPERATION'
 		 
 		 String senderName=enqObj.getSenderName();
 	     String telephoneNumber=enqObj.getTelephoneNumber();
@@ -45,6 +53,10 @@ public class EnquireOperation implements EnquireOperationManagement {
 	 public String updateEnquiry()
 	 {
 		 
+		//UPDATE ENQUIRY OPERATION
+			
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'UPDATE OPERATION'
+		 
 		 int enquiryID=enqObj.getEnquiryID();
 		 String feedback=enqObj.getFeedback();
 		 
@@ -62,6 +74,10 @@ public class EnquireOperation implements EnquireOperationManagement {
 	 
 	 public String deleteEnquiry()
 	 {
+		 
+		//DELETE ENQUIRY OPERATION
+			
+	   //IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'DELETE OPERATION'
 		 
 		 int enquiryID=enqObj.getEnquiryID();
 		

@@ -1,9 +1,12 @@
 package com.jwt.ejb.businesslogicLayer;
 
+import javax.ejb.Stateless;
+
 import com.jwt.ejb.business.UserValidationStructure;
 import com.jwt.ejb.dataAccessLayer.AdminDataAccessor;
 import com.jwt.ejb.dataAccessLayer.ClientDataAccessor;
 
+@Stateless
 public class UserValidation implements UserValidationStructure {
 	
 	private Admin admObj=new Admin();
@@ -15,40 +18,44 @@ public class UserValidation implements UserValidationStructure {
 	public String clientUserValidation()
 	{
 		
-		String username=custObj.getUsername();
-		String password=custObj.getPassword();
+		//USER VALIDATION OPERATION FOR CUSTOMER USER ACCOUNTS
 		
-		String userValidationStatus="";
+		String username=custObj.getUsername(); //GET PROVIDED USERNAME
+		String password=custObj.getPassword(); //GET PROVIDED PASSWORD
+		
+		String userValidationStatus=""; //VARIABLE TO DISPLAY RESULT OF USER VALIDATION
 				
-		boolean userValidationResult=clObj.userValidation(username, password);
+		boolean userValidationResult=clObj.userValidation(username, password); //STORING USER VALIDATION RESULT IN THE VARIABLE
 		
 		if(userValidationResult == true) {
 			
-			userValidationStatus="LOGIN SUCCESSFUL !";
+			userValidationStatus="LOGIN SUCCESSFUL !"; //RESULT FOR CORRECT USER AUTHENTICATIONS
 		} else {
 			
-			userValidationStatus="INVALID USER CREDENTIALS !";
+			userValidationStatus="INVALID USER CREDENTIALS !"; //RESULT FOR INVALID USER AUTHENTICATIONS
 		}
 		
-		return userValidationStatus;
+		return userValidationStatus; 
 		
 	}
 	public String adminUserValidation()
 	{
 		
-		String username=admObj.getUsername();
-		String password=admObj.getPassword();
+		//USER VALIDATION OPERATION FOR ADMINISTRATOR USER ACCOUNTS
 		
-		String userValidationStatus="";
+		String username=admObj.getUsername(); //GET PROVIDED USERNAME
+		String password=admObj.getPassword(); //GET PROVIDED PASSWORD
 		
-		boolean userValidationResult=admDAObj.userValidation(username, password);
+		String userValidationStatus=""; //VARIABLE TO DISPLAY RESULT OF USER VALIDATION
+		
+		boolean userValidationResult=admDAObj.userValidation(username, password); //STORING USER VALIDATION RESULT IN THE VARIABLE
 		
 		if(userValidationResult == true) {
 			
-			userValidationStatus="LOGIN SUCCESSFUL !";
+			userValidationStatus="LOGIN SUCCESSFUL !"; //RESULT FOR CORRECT USER AUTHENTICATIONS
 		} else {
 			
-			userValidationStatus="INVALID USER CREDENTIALS !";
+			userValidationStatus="INVALID USER CREDENTIALS !"; //RESULT FOR INVALID USER AUTHENTICATIONS
 		}
 		
 		return userValidationStatus;

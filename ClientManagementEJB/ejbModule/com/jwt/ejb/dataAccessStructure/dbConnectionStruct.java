@@ -6,6 +6,8 @@ import javax.ejb.Remote;
 
 @Remote
 public interface dbConnectionStruct {
+	
+	//INTERFACE TO BUILD DATABASE CONNECTION
 
-	public Connection dbConnection();
+	public Connection dbConnection(); //METHOD FOR DATABASE CONNECTION OPERATION
 }

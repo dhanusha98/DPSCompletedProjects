@@ -11,6 +11,10 @@ import com.jwt.ejb.dataAccessStructure.dbConnectionStruct;
 @Stateless
 public class DatabaseConnection implements dbConnectionStruct {
 	
+	//DATABASE CONNECTION BUILDING OPERATIONS
+	
+	//DATABASE CONNECTIVITY DETAILS
+	
 	private final String dataSource="jdbc:mysql://localhost:9999/dpsStockDB";
 	private final String dbUsername="root";
 	private final String dbPassword="";
@@ -19,6 +23,8 @@ public class DatabaseConnection implements dbConnectionStruct {
 	
 	public Connection dbConnection()
 	{
+		
+		//DATABASE CONNECTION OPERATION
 				
 		try {
 			

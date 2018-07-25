@@ -13,10 +13,12 @@ public class EnquireDataAccessor implements EnquireManagement {
 
 	private DatabaseConnection dbObj=new DatabaseConnection();
 	Connection conn=dbObj.dbConnection();
-	private String sql;
+	private String sql; //VARIABLE TO USE FOR SQL QUERIES
 	
 	public void searchEnquiry(int enquiryID)
 	{
+		
+		//SEARCH ENQUIRY DATA ACCESSING OPERATION
 		
 		try {
 			
@@ -49,6 +51,8 @@ public class EnquireDataAccessor implements EnquireManagement {
     public boolean insertEnquiry(String senderName, String telephoneNumber, String emailAddress, String address, String message, String feedback)
     {
     	
+    	//INSERT ENQUIRY DATA TO DATABASE
+    	
     	boolean insertionStatus=false;
     	
     	try {
@@ -75,6 +79,8 @@ public class EnquireDataAccessor implements EnquireManagement {
     public boolean updateEnquiry(int enquiryID, String feedback)
     {
     	
+    	//UPDATE ENQUIRY IN THE DATABASE
+    	
     	boolean updateStatus=false;
 
     	try {
@@ -99,6 +105,8 @@ public class EnquireDataAccessor implements EnquireManagement {
     }
     public boolean deleteEnquiry(int enquiryID)
     {
+    	
+    	//DELETE ENQUIRY DATA IN THE DATABASE
     	
     	boolean deleteStatus=false;
 

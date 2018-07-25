@@ -21,6 +21,8 @@ public class AdminDataAccessor implements AdminManagement {
 	public boolean userValidation(String username, String password) 
 	{
 		
+		//DATABASE INFORMATION ACCESSOR FOR USER VALIDATIONS
+		
 		boolean isValid=false;
 		
 		try {
@@ -48,6 +50,8 @@ public class AdminDataAccessor implements AdminManagement {
 	public void searchProfile(int adminID)
 	{
 		
+		//SEARCH PROFILE DATA ACCESSING OPERATION
+
 		try {
 			
 			Statement selectStmt=conn.createStatement();
@@ -79,6 +83,8 @@ public class AdminDataAccessor implements AdminManagement {
 	public boolean insertProfile(String adminName, String username, String password, String otherDetails)
 	{
 		
+		//INSERT PROFILE DATA TO DATABASE
+
 		boolean insertionStatus=false;
 		
 		try {
@@ -106,6 +112,8 @@ public class AdminDataAccessor implements AdminManagement {
 	public boolean updateProfile(int adminID, String adminName, String username, String password, String otherDetails)
 	{
 		
+		//UPDATE PROFILE DATA IN THE DATABASE
+		
 		boolean updateStatus=false;
 		
 		try {
@@ -132,6 +140,8 @@ public class AdminDataAccessor implements AdminManagement {
 	}
 	public boolean deleteProfile(int adminID)
 	{
+		
+		//DELETE PROFILE DATA IN THE DATABASE
 		
 		boolean deleteStatus=false;
 		

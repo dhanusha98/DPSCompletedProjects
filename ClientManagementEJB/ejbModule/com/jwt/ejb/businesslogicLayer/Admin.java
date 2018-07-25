@@ -1,6 +1,8 @@
 package com.jwt.ejb.businesslogicLayer;
 
 public class Admin {
+	
+	//ADMIN ENTITY WITH ITS ATTRIBUTES AND METHODS TO ACCESS AND SET VALUES FOR THEM
 		
 	private int adminID;
 	private String adminName;

@@ -2,6 +2,9 @@ package com.jwt.ejb.businesslogicLayer;
 
 public class Enquiry {
 	
+	//ENQUIRY ENTITY WITH ITS ATTRIBUTES AND METHODS TO ACCESS AND SET VALUES FOR THEM
+
+	
 	private int enquiryID;
 	private String senderName;
 	private String telephoneNumber;

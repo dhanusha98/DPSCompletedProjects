@@ -17,12 +17,20 @@ public class ClientOperation implements ClientOperationManagement{
 	public void searchProfile()
 	{
 		
+		//SEARCH CUSTOMER PROFILE OPERATION
+		
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'SEARCH OPERATION'
+		
 		int customerID=clObj.getCustomerID();
 		clDAObj.searchProfile(customerID);
 		
 	}
 	public String insertProfile()
 	{
+		
+		//INSERT CUSTOMER PROFILE OPERATION
+		
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'INSERT OPERATION'
 		
 		String customerFullName=clObj.getCustomerFullName();
 		String username=clObj.getUsername();
@@ -43,6 +51,10 @@ public class ClientOperation implements ClientOperationManagement{
 	}
 	public String updateProfile()
 	{
+		
+		//UPDATE CUSTOMER PROFILE OPERATION
+		
+		//IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'UPDATE OPERATION'
 		
 		int customerID=clObj.getCustomerID();
 		String customerFullName=clObj.getCustomerFullName();
@@ -65,6 +77,10 @@ public class ClientOperation implements ClientOperationManagement{
 	}
 	public String deleteProfile()
 	{
+		
+		//DELETE CUSTOMER PROFILE OPERATION
+		
+	    //IN FOLLOWING, GET PROVIDED ADMIN DETAILS TO IMPLEMENT 'DELETE OPERATION'
 		
 		int customerID=clObj.getCustomerID();
 		
