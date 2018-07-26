@@ -2,8 +2,12 @@ package com.jwt.ejb.presentationLayer;
 
 import java.util.Scanner;
 public class CustomerMainMenu {
+	
+	//CUSTOMER MAIN MENU USER INTERFACE
 
 	public static void main(String [] args) {
+		
+		//UI DISPLAY STRUCTURE CREATION
 		
 		Scanner sc=new Scanner(System.in);
 		

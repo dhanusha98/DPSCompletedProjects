@@ -13,24 +13,27 @@ import com.jwt.ejb.businesslogicLayer.ClientOperation;
 
 public class CustomerProfile {
 	
-	private static Client clientObj=new Client();
-	private static ClientOperation clientOPObj=new ClientOperation();
+	//CUSTOMER OWN PROFILE MANAGEMENT USER INTERFACE
+	
+	private static Client clientObj=new Client(); //OBJECT TO ACCESS CUSTOMER ENTITY
 	
 	private static Scanner sc=new Scanner(System.in);
 	
 	private static String transactionResultStatus;
 	
-	private static final String LOOKUP_STRING="ClientOperation/remote";
-	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099";
-	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces";
-	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory";
+	private static final String LOOKUP_STRING="ClientOperation/remote"; //CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
+	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099"; //URL FOR BEAN CONTEXT INITIALIZATION
+	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
+	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
 	
-	private static Context initialContext;
+	private static Context initialContext; //BEAN CONTEXT INITALIZAR OBJECT
 	
-	private static ClientOperationManagement bean=doLookUp();
+	private static ClientOperationManagement bean=doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
 	
 	public static Context getInitialContext() throws NamingException 
 	{
+		
+		//METHOD FOR BEAN CONTEXT INITIALIZATION
 		
 		if(initialContext == null) {
 			
@@ -48,6 +51,8 @@ public class CustomerProfile {
 	
 	private static ClientOperationManagement doLookUp()
 	{
+		
+		//METHOD FOR BEAN INSTANTIATION WITH REQUIRED BUSINESS LOGIC CLASS TO IMPLEMENT OPERATIONS
 		
 		Context context=null;
 		ClientOperationManagement bean=null;
@@ -68,24 +73,34 @@ public class CustomerProfile {
 	public static void viewUserProfile()
 	{
 		
+		//METHOD TO DISPLAY USER PROFILE DETAILS
+		
 		   System.out.println("================================= VIEW USER PROFILE DETAILS =================================");
-
-		   System.out.println("ENTER CUSTOMER ID: ");
-		   int customerID=sc.nextInt();
+		  
+		   System.out.println("ENTER USERNAME: ");
+		   String username=sc.next();
+		   sc.nextLine();
 		   
-		   if(String.valueOf(customerID).isEmpty()) {
-			   System.out.println("CUSTOMER ID IS EMPTY !");
+		   System.out.println("ENTER PASSWORD: ");
+		   String password=sc.next();
+		   sc.nextLine();
+		   
+		   if(username.isEmpty() || password.isEmpty()) {
+			   System.out.println("PLEASE PROVIDE USER AUTHENTICATIONS !");
 			   
 		   } else {
 			   
-			   clientObj.setCustomerID(customerID);			   
-			   bean.searchProfile();
+			   clientObj.setUsername(username);
+			   clientObj.setPassword(password);
+			   bean.viewOwnProfile();
 		   }
-		   
+		     
 	}
 	
 	public static void updateUserProfile()
 	{
+		
+		//METHOD TO UPDATE USER PROFILE DETAILS
 		
 		   System.out.println("================================= UPDATE USER PROFILE DETAILS =================================");
 		   
@@ -125,6 +140,8 @@ public class CustomerProfile {
 	}
 
 	public static void main(String[] args) {
+		
+		//UI DISPLAY STRUCTURE
 		
         Scanner sc=new Scanner(System.in);
 		

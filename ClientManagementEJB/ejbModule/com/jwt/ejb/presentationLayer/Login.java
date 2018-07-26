@@ -13,24 +13,25 @@ import com.jwt.ejb.businesslogicLayer.Client;
 import com.jwt.ejb.businesslogicLayer.UserValidation;
 
 public class Login {
+	
+	//USER LOGIN INTERFACE
 		
 	private static Admin admObj=new Admin();
 	private static Client clientObj=new Client();
+		
+	private static String userValidationStatus; //VARIABLE TO DISPLAY USER VALIDATION RESULT
 	
-	private static UserValidation uservalObj=new UserValidation();
+	private static final String LOOKUP_STRING="UserValidation/remote"; //CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
+	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099"; //URL FOR BEAN CONTEXT INITIALIZATION
+	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
+	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
 	
-	
-	private static String userValidationStatus;
-	
-	private static final String LOOKUP_STRING="UserValidation/remote";
-	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099";
-	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces";
-	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory";
-	
-	private static Context initialContext;
-	private static UserValidationStructure bean = doLookUp();
+	private static Context initialContext; //BEAN CONTEXT INITALIZAR OBJECT
+	private static UserValidationStructure bean = doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
 	
 	public static Context getInitialContext() throws NamingException {
+		
+		//METHOD FOR BEAN CONTEXT INITIALIZATION
 		
 		if(initialContext == null) {
 			
@@ -50,6 +51,8 @@ public class Login {
 	private static UserValidationStructure doLookUp()
 	{
 		
+		//METHOD FOR BEAN INSTANTIATION WITH REQUIRED BUSINESS LOGIC CLASS TO IMPLEMENT OPERATIONS
+		
 		Context context=null;
 		UserValidationStructure bean = null;
 		
@@ -67,6 +70,8 @@ public class Login {
 	}
 	
 	public static void main(String [] args) {
+		
+		//UI DISPLAY STRUCTURE
 		
 		String username;
 		String password;

@@ -17,7 +17,6 @@ public class AdminDataAccessor implements AdminManagement {
 	
 	private Connection conn=dbconnObj.dbConnection();	
 
-	
 	public boolean userValidation(String username, String password) 
 	{
 		
@@ -45,6 +44,36 @@ public class AdminDataAccessor implements AdminManagement {
 		}
 		
 		return isValid;
+	}
+
+	public void viewOwnProfile(String username, String password)
+	{
+		
+         try {
+			
+			Statement validationStmt=conn.createStatement();
+			sql="SELECT * FROM admin WHERE AdminUsername='"+username+"', AND AdminPassword='"+password+"'";
+			
+			ResultSet rs=validationStmt.executeQuery(sql);
+			
+			if(rs.next())
+			{
+				System.out.println("ADMIN ID: "+rs.getString(1));
+				System.out.println("ADMIN FULL NAME: "+rs.getString(2));
+				System.out.println("ADMIN USERNAME: "+rs.getString(3));
+				System.out.println("ADMIN PASSWORD: "+rs.getString(4));
+				System.out.println("OTHER DETAILS: "+rs.getString(5));
+				
+			} else {
+				
+				System.out.println("CAN'T FIND THE PROFILE DETAILS !");
+			}
+		}
+		
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
 	}
 
 	public void searchProfile(int adminID)

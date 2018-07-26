@@ -14,6 +14,15 @@ public class AdminOperation implements AdminOperationManagement {
 	private String transactionStatus=""; //VARIABLE TO DISPLAY TRANSACTIONS STATUS OF INSERT, UPDATE AND DELETE OPERATIONS
 	private boolean queryResult; //QUERY RESULT STATUS IN DATA ACCESS LAYER OPERATIONS
 	
+	public void viewOwnProfile()
+	{
+		
+		String username=admObj.getUsername();
+		String password=admObj.getPassword();
+		
+		admDAObj.viewOwnProfile(username, password);
+	}
+	
 	public void searchProfile()
 	{	
 		//SEARCH ADMIN PROFILE OPERATION

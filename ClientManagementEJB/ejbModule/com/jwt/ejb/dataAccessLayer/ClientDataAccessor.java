@@ -44,6 +44,34 @@ public class ClientDataAccessor implements ClientManagement {
 		return isValid;
 		
 	}
+	
+	public void viewOwnProfile(String username, String password)
+	{
+		
+        try {
+			
+			Statement validationStmt=conn.createStatement();
+			sql="SELECT * FROM customer WHERE CustomerUsername='"+username+"', AND CustomerPassword='"+password+"'";
+			
+			ResultSet rs=validationStmt.executeQuery(sql);
+			
+			if(rs.next())
+			{
+				System.out.println("CUSTOMER ID: "+rs.getString(1));
+				System.out.println("CUSTOMER FULL NAME: "+rs.getString(2));
+				System.out.println("USERNAME: "+rs.getString(3));
+				System.out.println("PASSWORD: "+rs.getString(4));
+				System.out.println("OTHER DETAILS: "+rs.getString(5));
+				
+			} else {
+				System.out.println("PROFILE DETAILS NOT FOUND !");
+			}
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+	}
 
 	public void searchProfile(int customerID) 
 	{

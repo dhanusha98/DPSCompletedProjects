@@ -4,9 +4,13 @@ import java.util.Scanner;
 
 public class AdminMainMenu {
 	
+	//ADMIN MAIN MENU USER INTERFACE
+	
     public static void main(String [] args) {
+    	
+		//UI DISPLAY STRUCTURE
 		
-    	Scanner sc=new Scanner(System.in);
+    	Scanner sc=new Scanner(System.in); //SCANNER OBJECT TO GET USER INPUTS 
     	
     	System.out.println("===============================================================================");
 		System.out.println("                              MAIN MENU                                        ");

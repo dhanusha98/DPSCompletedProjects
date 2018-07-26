@@ -13,6 +13,8 @@ import com.jwt.ejb.businesslogicLayer.AdminOperation;
 
 public class AdminManagementViewer {
 	
+	//ADMIN PROFILE MANAGEMENT USER INTERFACE
+	
 	private static Scanner sc=new Scanner(System.in);
 	private static Admin admObj=new Admin();
 	

@@ -13,6 +13,15 @@ public class ClientOperation implements ClientOperationManagement{
 	
 	private String transactionStatus=""; //VARIABLE TO DISPLAY TRANSACTIONS STATUS OF INSERT, UPDATE AND DELETE OPERATIONS
 	private boolean queryResult; //QUERY RESULT STATUS IN DATA ACCESS LAYER OPERATIONS
+	
+	public void viewOwnProfile()
+	{
+		
+		String username=clObj.getUsername();
+		String password=clObj.getPassword();
+		
+		clDAObj.viewOwnProfile(username, password);
+	}
 
 	public void searchProfile()
 	{

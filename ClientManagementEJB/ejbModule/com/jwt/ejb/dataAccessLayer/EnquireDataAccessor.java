@@ -86,7 +86,7 @@ public class EnquireDataAccessor implements EnquireManagement {
     	try {
     		
     		Statement updateStmt=conn.createStatement();
-    		sql="UPDATE enquiry SET feedback='"+feedback+"' WHERE enquiryID="+enquiryID+"";
+    		sql="UPDATE enquiry SET Feedback='"+feedback+"' WHERE enquiryID="+enquiryID+"";
     		
     		int result=updateStmt.executeUpdate(sql);
     		
@@ -110,7 +110,6 @@ public class EnquireDataAccessor implements EnquireManagement {
     	
     	boolean deleteStatus=false;
 
-    	
     	try {
     		
     			Statement deleteStmt=conn.createStatement();

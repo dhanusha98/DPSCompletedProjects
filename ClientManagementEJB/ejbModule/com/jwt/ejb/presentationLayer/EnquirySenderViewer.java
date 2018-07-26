@@ -13,22 +13,25 @@ import com.jwt.ejb.businesslogicLayer.Enquiry;
 
 public class EnquirySenderViewer {
 	
-	private static Enquiry enqObj=new Enquiry();
-	private static EnquireOperation enqOPObj=new EnquireOperation();
+	//ONLINE ENQUIRY SERVICE USER INTERFACE
+	
+	private static Enquiry enqObj=new Enquiry(); //OBJECT TO ACCESS ENQUIRY ENTITY
 	
 	private static String enquirySendStatus;
 	
-	private static final String LOOKUP_STRING="EnquiryOperation/remote";
-	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099";
-	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces";
-	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory";
+	private static final String LOOKUP_STRING="EnquiryOperation/remote"; //CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
+	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099"; //URL FOR BEAN CONTEXT INITIALIZATION
+	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
+	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
 	
-	private static Context initialContext;
+	private static Context initialContext; //BEAN CONTEXT INITALIZAR OBJECT
 	
-	private static EnquireOperationManagement bean=doLookUp();
+	private static EnquireOperationManagement bean=doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
 	
 	public static Context getInitialContext() throws NamingException 
 	{
+		
+		//METHOD FOR BEAN CONTEXT INITIALIZATION
 		
 		if(initialContext == null) {
 			
@@ -47,6 +50,8 @@ public class EnquirySenderViewer {
 	private static EnquireOperationManagement doLookUp()
 	{
 		
+		//METHOD FOR BEAN INSTANTIATION WITH REQUIRED BUSINESS LOGIC CLASS TO IMPLEMENT OPERATIONS
+		
 		Context context=null;
 		EnquireOperationManagement bean=null;
 		
@@ -64,6 +69,8 @@ public class EnquirySenderViewer {
 	}
 	
 	public static void main(String[] args) {
+		
+		//ONLINE ENQUIRY SERVICE
 		
 		Scanner sc=new Scanner(System.in);
 		

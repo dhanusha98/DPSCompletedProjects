@@ -13,6 +13,8 @@ import com.jwt.ejb.businesslogicLayer.ClientOperation;
 
 public class ClientManagementViewer {
 	
+	//CUSTOMER PROFILE MANAGEMENT USER INTERFACE
+	
 	private static Client clientObj=new Client();
 	private static ClientOperation clientOPObj=new ClientOperation();
 	

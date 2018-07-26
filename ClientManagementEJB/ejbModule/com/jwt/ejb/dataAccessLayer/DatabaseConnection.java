@@ -15,7 +15,7 @@ public class DatabaseConnection implements dbConnectionStruct {
 	
 	//DATABASE CONNECTIVITY DETAILS
 	
-	private final String dataSource="jdbc:mysql://localhost:9999/dpsStockDB";
+	private final String dataSource="jdbc:mysql://localhost:9999/ClientMgtDB";
 	private final String dbUsername="root";
 	private final String dbPassword="";
 	
