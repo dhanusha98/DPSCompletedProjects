@@ -22,9 +22,10 @@ public class Login {
 	private static String userValidationStatus; //VARIABLE TO DISPLAY USER VALIDATION RESULT
 	
 	private static final String LOOKUP_STRING="UserValidation/remote"; //CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
-	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099"; //URL FOR BEAN CONTEXT INITIALIZATION
-	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
-	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
+	private static final String INITIAL_CONTEXT_FACTORY = "org.jnp.interfaces.NamingContextFactory"; //URL FOR BEAN CONTEXT INITIALIZATION
+	
+	private static final String PROVIDER_URL="jnp://localhost:1099"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
+	private static final String JNP_INTERFACES = "org.jboss.naming:org.jnp.interfaces"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
 	
 	private static Context initialContext; //BEAN CONTEXT INITALIZAR OBJECT
 	private static UserValidationStructure bean = doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
@@ -34,14 +35,12 @@ public class Login {
 		//METHOD FOR BEAN CONTEXT INITIALIZATION
 		
 		if(initialContext == null) {
-			
-			Properties prop=new Properties();
-			
-			prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
-			prop.put(Context.PROVIDER_URL, PROVIDER_URL);
-			prop.put(Context.URL_PKG_PREFIXES, JNP_INTERFACES);
-			
-			initialContext=new InitialContext(prop);
+						
+			Properties prop = new Properties();
+            prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
+            prop.put(Context.URL_PKG_PREFIXES, JNP_INTERFACES);
+            prop.put(Context.PROVIDER_URL, PROVIDER_URL);
+            initialContext = new InitialContext(prop);
 			
 		}
 		

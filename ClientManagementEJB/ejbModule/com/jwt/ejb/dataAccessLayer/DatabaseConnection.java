@@ -15,7 +15,7 @@ public class DatabaseConnection implements dbConnectionStruct {
 	
 	//DATABASE CONNECTIVITY DETAILS
 	
-	private final String dataSource="jdbc:mysql://localhost:9999/ClientMgtDB";
+	private final String dataSource="jdbc:mysql://localhost/clientmgtdb";
 	private final String dbUsername="root";
 	private final String dbPassword="";
 	
@@ -28,7 +28,7 @@ public class DatabaseConnection implements dbConnectionStruct {
 				
 		try {
 			
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			conn=DriverManager.getConnection(dataSource, dbUsername, dbPassword);
 			
@@ -44,6 +44,5 @@ public class DatabaseConnection implements dbConnectionStruct {
 		
 		return conn;
 	}
-
 
 }
