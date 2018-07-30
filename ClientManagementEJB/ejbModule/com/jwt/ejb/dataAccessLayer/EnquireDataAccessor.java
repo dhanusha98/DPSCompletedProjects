@@ -58,8 +58,8 @@ public class EnquireDataAccessor implements EnquireManagement {
     	try {
     		
     		Statement insertStmt=conn.createStatement();
-    		sql="INSERT INTO enquiry VALUES ('"+senderName+"'. '"+telephoneNumber+"', '"+emailAddress+"', '"+address+"'. '"+message+"', '"+feedback+"')";
-    		
+    		sql="INSERT INTO enquiry (SenderName, TelephoneNumber, EmailAddress, Address, Message, Feedback) VALUES ('"+senderName+"', '"+telephoneNumber+"', '"+emailAddress+"', '"+address+"', '"+message+"', '"+feedback+"')";
+    		    		
     		int result = insertStmt.executeUpdate(sql);
     		
     		if(result > 0) {
@@ -132,4 +132,19 @@ public class EnquireDataAccessor implements EnquireManagement {
     	return deleteStatus;
     }
 
+   /* public static void main(String[] args) {
+		
+    	EnquireDataAccessor edaObj = new EnquireDataAccessor();
+    	
+    	boolean result = edaObj.insertEnquiry("PIUMAL", "0712473462", "dhanusharoks@hotmail.com", "Colombo", "Hi", "No Feedback");
+    	
+    	if(result == true)
+    	{
+    		
+    		System.out.println("INSERTED !");
+    	} else {
+    		
+    		System.out.println("NOT INSERTED !");
+    	}
+	}*/
 }

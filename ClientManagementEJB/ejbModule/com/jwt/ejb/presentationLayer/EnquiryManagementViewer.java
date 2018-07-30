@@ -21,10 +21,10 @@ public class EnquiryManagementViewer {
 	
 	private static Scanner sc=new Scanner(System.in); //SCANNER OBJECT TO GET USER INPUTS
 	
-	private static final String LOOKUP_STRING="EnquiryOperation/remote"; //CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
-	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099"; //URL FOR BEAN CONTEXT INITIALIZATION
-	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
-	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
+	private static final String LOOKUP_STRING="EnquireOperation/remote";//CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
+	private static final String INITIAL_CONTEXT_FACTORY = "org.jnp.interfaces.NamingContextFactory"; //URL FOR BEAN CONTEXT INITIALIZATION
+	private static final String PROVIDER_URL = "jnp://localhost:1099"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
+	private static final String JNP_INTERFACES = "org.jboss.naming:org.jnp.interfaces"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
 	
 	private static Context initialContext; //BEAN CONTEXT INITALIZAR OBJECT
 	
@@ -72,9 +72,8 @@ public class EnquiryManagementViewer {
 	
 	public static void searchEnquiry()
 	{
-		
 		//METHOD FOR SEARCH ENQUIRY SERVICE
-		
+				
 		System.out.println("==================================== SEARCH ENQUIRY ====================================");
 
 		System.out.println("ENTER ENQUIRY ID: ");
@@ -95,7 +94,7 @@ public class EnquiryManagementViewer {
 	{
 		
 		//METHOD FOR INSERT ENQUIRY SERVICE
-		
+				
 		System.out.println("==================================== INSERT ENQUIRY ====================================");
 
 		System.out.println("ENTER SENDER NAME: ");
@@ -140,7 +139,7 @@ public class EnquiryManagementViewer {
 	{
 		
 		//METHOD FOR UPDATE ENQUIRY SERVICE
-		
+				
 		System.out.println("==================================== UPDATE ENQUIRY ====================================");
 
 		System.out.println("ENTER ENQUIRY ID: ");
@@ -190,7 +189,7 @@ public class EnquiryManagementViewer {
 	{
 		
 		//METHOD FOR DELETE ENQUIRY SERVICE
-		
+				
 		System.out.println("==================================== DELETE ENQUIRY ====================================");
 
 		System.out.println("ENTER ENQUIRY ID: ");

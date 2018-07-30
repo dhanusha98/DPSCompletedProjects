@@ -28,7 +28,6 @@ public class Login {
 	private static final String JNP_INTERFACES = "org.jboss.naming:org.jnp.interfaces"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
 	
 	private static Context initialContext; //BEAN CONTEXT INITALIZAR OBJECT
-	private static UserValidationStructure bean = doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
 	
 	public static Context getInitialContext() throws NamingException {
 		
@@ -68,6 +67,9 @@ public class Login {
 		return bean;
 	}
 	
+	//private static UserValidationStructure bean = doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
+
+	
 	public static void main(String [] args) {
 		
 		//UI DISPLAY STRUCTURE
@@ -75,6 +77,7 @@ public class Login {
 		String username;
 		String password;
 	
+		UserValidationStructure bean = doLookUp();
 		
 		Scanner sc=new Scanner(System.in);
 		
@@ -103,7 +106,7 @@ public class Login {
 				
 				userValidationStatus=bean.clientUserValidation();
 				
-				if(userValidationStatus.equalsIgnoreCase("LOGIN SUCCESSFUL !")) {
+				if(userValidationStatus.equalsIgnoreCase("LOGIN SUCCESSFUL")) {
 					CustomerMainMenu.main(new String[0]);
 
 				} else {
@@ -131,7 +134,7 @@ public class Login {
 				
 				userValidationStatus=bean.adminUserValidation();
 				
-				if(userValidationStatus.equalsIgnoreCase("LOGIN SUCCESSFUL !")) {
+				if(userValidationStatus.equalsIgnoreCase("LOGIN SUCCESSFUL")) {
 					AdminMainMenu.main(new String[0]);
 
 				} else {

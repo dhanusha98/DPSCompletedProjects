@@ -29,10 +29,10 @@ public class UserValidation implements UserValidationStructure {
 		
 		if(userValidationResult == true) {
 			
-			userValidationStatus="LOGIN SUCCESSFUL !"; //RESULT FOR CORRECT USER AUTHENTICATIONS
+			userValidationStatus="LOGIN SUCCESSFUL"; //RESULT FOR CORRECT USER AUTHENTICATIONS
 		} else {
 			
-			userValidationStatus="INVALID USER CREDENTIALS !"; //RESULT FOR INVALID USER AUTHENTICATIONS
+			userValidationStatus="INVALID USER CREDENTIALS"; //RESULT FOR INVALID USER AUTHENTICATIONS
 		}
 		
 		return userValidationStatus; 
@@ -52,10 +52,10 @@ public class UserValidation implements UserValidationStructure {
 		
 		if(userValidationResult == true) {
 			
-			userValidationStatus="LOGIN SUCCESSFUL !"; //RESULT FOR CORRECT USER AUTHENTICATIONS
+			userValidationStatus="LOGIN SUCCESSFUL"; //RESULT FOR CORRECT USER AUTHENTICATIONS
 		} else {
 			
-			userValidationStatus="INVALID USER CREDENTIALS !"; //RESULT FOR INVALID USER AUTHENTICATIONS
+			userValidationStatus="INVALID USER CREDENTIALS"; //RESULT FOR INVALID USER AUTHENTICATIONS
 		}
 		
 		return userValidationStatus;

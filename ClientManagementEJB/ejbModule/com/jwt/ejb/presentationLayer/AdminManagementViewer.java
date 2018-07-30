@@ -82,7 +82,7 @@ public class AdminManagementViewer {
 			
 		} else {
 			
-			admOPObj.searchProfile();
+			//admOPObj.searchProfile();
 			bean.searchProfile();
 		}
 	}

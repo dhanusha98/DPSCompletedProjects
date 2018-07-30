@@ -19,14 +19,14 @@ public class EnquirySenderViewer {
 	
 	private static String enquirySendStatus;
 	
-	private static final String LOOKUP_STRING="EnquiryOperation/remote"; //CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
-	private static final String INITIAL_CONTEXT_FACTORY="jnp://localhost:1099"; //URL FOR BEAN CONTEXT INITIALIZATION
-	private static final String PROVIDER_URL="org.jboss.naming:org.jnp.interfaces"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
-	private static final String JNP_INTERFACES="org.jnp.interfaces.NamingContextFactory"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
+	private static final String LOOKUP_STRING="EnquireOperation/remote"; //CLASS FOR OBJECT INSTANTIATION TO IMPLEMENT OPERATIONS
+    private static final String INITIAL_CONTEXT_FACTORY = "org.jnp.interfaces.NamingContextFactory"; //URL FOR BEAN CONTEXT INITIALIZATION
+    private static final String PROVIDER_URL = "jnp://localhost:1099"; //ENABLE JBOSS SUPPORT FOR EJB IMPLEMENTATIONS
+    private static final String JNP_INTERFACES = "org.jboss.naming:org.jnp.interfaces"; //PATH FOR NAMING CONTEXT FACTORY FOR BEAN CONTEXT INITIALIZATION
 	
 	private static Context initialContext; //BEAN CONTEXT INITALIZAR OBJECT
 	
-	private static EnquireOperationManagement bean=doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
+	//private static EnquireOperationManagement bean=doLookUp(); //CREATION AND INSTANTIATION OF BEAN TO ACCESS BUSINESS LOGIC FUNCTIONS
 	
 	public static Context getInitialContext() throws NamingException 
 	{
@@ -35,13 +35,11 @@ public class EnquirySenderViewer {
 		
 		if(initialContext == null) {
 			
-			Properties prop=new Properties();
-			
-			prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
-			prop.put(Context.PROVIDER_URL, PROVIDER_URL);
-			prop.put(Context.URL_PKG_PREFIXES, JNP_INTERFACES);
-			
-			initialContext=new InitialContext();
+			Properties prop = new Properties();
+            prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
+            prop.put(Context.URL_PKG_PREFIXES, JNP_INTERFACES);
+            prop.put(Context.PROVIDER_URL, PROVIDER_URL);
+            initialContext = new InitialContext(prop);
 		}
 		
 		return initialContext;
@@ -72,6 +70,8 @@ public class EnquirySenderViewer {
 		
 		//ONLINE ENQUIRY SERVICE
 		
+		EnquireOperationManagement bean=doLookUp();
+		
 		Scanner sc=new Scanner(System.in);
 		
 		System.out.println("=======================================================================================");
@@ -95,11 +95,16 @@ public class EnquirySenderViewer {
 		System.out.println("MESSAGE: ");
 		String message=sc.nextLine();
 		
-		String feedback=""; //FEEDBACK FOR ENQUIRY. IT'S NOT TO BE PROVIDED IN HERE AS IT'S AN ADMIN ACTIVITY
+		String feedback="NO FEEDACK YET"; //FEEDBACK FOR ENQUIRY. IT'S NOT TO BE PROVIDED IN HERE AS IT'S AN ADMIN ACTIVITY
 		
-		if(!(senderName.isEmpty() || telephoneNumber.isEmpty() || 
-		   emailAddress.isEmpty() || address.isEmpty() || message.isEmpty()))
+		if(senderName.isEmpty() || telephoneNumber.isEmpty() || 
+		   emailAddress.isEmpty() || address.isEmpty() || message.isEmpty())
 		{
+			
+			System.out.println("MANDATORY FIELDS ARE EMPTY !");
+
+			
+		} else {
 			
 			enqObj.setSenderName(senderName);
 			enqObj.setTelephoneNumber(telephoneNumber);
@@ -111,8 +116,6 @@ public class EnquirySenderViewer {
 			enquirySendStatus=bean.insertEnquiry();
             System.out.println(enquirySendStatus);
 			
-		} else {
-			System.out.println("MANDATORY FIELDS ARE EMPTY !");
 		}
 	}
 
